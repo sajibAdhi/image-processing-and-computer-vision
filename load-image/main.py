@@ -7,25 +7,25 @@ Original file is located at
     https://colab.research.google.com/drive/16pLt6Pq9IzE3r_OfXyX3TxBHeL08v5sf
 """
 
-import numpy
 import cv2
-import math
 
-img = cv2.imread('assets\car1.jpg', cv2.IMREAD_GRAYSCALE)
-
-cv2.imshow(img)
+filepath = r"assets\car\2.jpg"
+img = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
+cv2.imshow('color-image-window', img)
+cv2.waitKey(5000)
 
 print(img.max())
 print(img.min())
 print(img.shape)
 
 for row in range(img.shape[0]):
-  for column in range(img.shape[1]):
-    eachPixel = img.item(row,column)
+    for column in range(img.shape[1]):
+        eachPixel = img.item(row, column)
 
-    if eachPixel > 155:
-      img.itemset((row,column), img.max())
-    else:
-      img.itemset((row,column), img.min())
+        if eachPixel > 100:
+            img.itemset((row, column), img.max())
+        else:
+            img.itemset((row, column), img.min())
 
-cv2.imshow(img)
+cv2.imshow('gray-image-window', img)
+cv2.waitKey(5000)
